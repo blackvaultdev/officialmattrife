@@ -14,8 +14,6 @@ export function generateTicketEmail(ticket: Ticket) {
   const body = `
 Hello Matt Rife Management,
 
-I hope you are doing well.
-
 I would like to request tickets for the following show:
 
 City: ${ticket.city}
@@ -23,12 +21,11 @@ Venue: ${ticket.venue}
 Date: ${ticket.date}
 ${ticket.time ? `Time: ${ticket.time}` : ''}
 
-Please let me know if tickets are available and how I can proceed to secure them.
+Please let me know if tickets are available and how I can secure them.
 
-Thank you for your time and assistance.
+Thank you for your assistance.
 
 Best regards,
-[Your Name]
 `.trim()
 
   if (isMobile()) {

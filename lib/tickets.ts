@@ -9,19 +9,6 @@ export type Ticket = {
 
 export const tickets: Ticket[] = [
   {
-    id: '1',
-    city: 'New York, USA',
-    venue: 'Madison Square Garden',
-    date: 'Jan 5, 2026',
-  },
-  {
-    id: '2',
-    city: 'Los Angeles, USA',
-    venue: 'Staples Center',
-    date: 'Jan 12, 2026',
-    lowTickets: true,
-  },
-  {
     id: '3',
     city: 'Christchurch, New Zealand',
     venue: 'Wolfbrook Arena',
@@ -39,6 +26,7 @@ export const tickets: Ticket[] = [
     city: 'Brisbane, Australia',
     venue: 'Brisbane Entertainment Centre',
     date: 'Jan 19 2026',
+    lowTickets: true,
   },
   {
     id: '6',
@@ -59,6 +47,7 @@ export const tickets: Ticket[] = [
     venue: 'Palais Theatre',
     date: 'Jan 23 2026',
     time: '9:30pm',
+    lowTickets: true,
   },
   {
     id: '9',
@@ -91,6 +80,7 @@ export const tickets: Ticket[] = [
     city: 'Sydney, Australia',
     venue: 'Sydney Opera House',
     date: 'Feb 1 2026',
+    lowTickets: true,
   },
   {
     id: '14',
@@ -115,6 +105,7 @@ export const tickets: Ticket[] = [
     city: 'Singapore',
     venue: 'Singapore Indoor Stadium',
     date: 'Feb 07 2026',
+    lowTickets: true,
   },
   {
     id: '18',
@@ -133,12 +124,14 @@ export const tickets: Ticket[] = [
     city: 'Jacksonville, Florida',
     venue: 'VyStar Veterans Memorial Arena',
     date: 'Mar 12 2026',
+    lowTickets: true,
   },
   {
     id: '21',
     city: 'Tampa, Florida',
     venue: 'Benchmark International Arena',
     date: 'Mar 13 2026',
+    lowTickets: true,
   },
   {
     id: '22',
