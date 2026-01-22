@@ -1,4 +1,4 @@
-import { tickets } from '@/lib/tickets'
+import { activeTickets, getTimeStatus } from '@/lib/tickets'
 import { generateTicketEmail } from '@/lib/utils/generateTicketEmail'
 
 export default function Shows() {
@@ -17,7 +17,7 @@ export default function Shows() {
 
         {/* Tickets list */}
         <div className='flex flex-col divide-y divide-white/10'>
-          {tickets.map((ticket, index) => (
+          {activeTickets.map((ticket, index) => (
             <div
               key={`${ticket.id}-${index}`}
               className='flex items-center justify-between py-6'
@@ -27,11 +27,38 @@ export default function Shows() {
                 <span className='text-base md:text-lg font-semibold text-white tracking-tight'>
                   {ticket.date} — {ticket.venue}
                   {ticket.time && ` — ${ticket.time}`}
-                  {ticket.lowTickets && (
-                    <span className='ml-2 text-xs font-semibold uppercase tracking-wide text-red-500'>
-                      Low Tickets
-                    </span>
-                  )}
+{(() => {
+  const status = getTimeStatus(ticket.date)
+
+  if (status === "ending" && ticket.lowTickets) {
+    return (
+      <span className="ml-2 text-xs font-semibold uppercase tracking-wide">
+        <span className="text-red-500">LOW TICKETS</span>
+        <span className="ml-1 text-white">–</span>
+        <span className="ml-1 text-yellow-400">FINAL HOURS</span>
+      </span>
+    )
+  }
+
+  if (status === "ending") {
+    return (
+      <span className="ml-2 text-xs font-semibold uppercase tracking-wide text-yellow-400">
+        FINAL HOURS
+      </span>
+    )
+  }
+
+  if (ticket.lowTickets) {
+    return (
+      <span className="ml-2 text-xs font-semibold uppercase tracking-wide text-red-500">
+        LOW TICKETS
+      </span>
+    )
+  }
+
+  return null
+})()}
+
                 </span>
 
                 <span className='mt-1 text-sm font-medium text-white/60'>

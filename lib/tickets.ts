@@ -33,6 +33,7 @@ export const tickets: Ticket[] = [
     city: 'Adelaide, Australia',
     venue: 'Adelaide Entertainment Centre',
     date: 'Jan 22 2026',
+    lowTickets: true,
   },
   {
     id: '7',
@@ -456,3 +457,24 @@ export const tickets: Ticket[] = [
     date: 'Dec 29 2026',
   },
 ]
+
+function getExpiration(dateStr: string) {
+  const d = new Date(dateStr)
+  d.setHours(23, 59, 59, 999)
+  return d
+}
+
+export function getTimeStatus(dateStr: string) {
+  const now = new Date()
+  const expiresAt = getExpiration(dateStr)
+
+  const hoursLeft = (expiresAt.getTime() - now.getTime()) / (1000 * 60 * 60)
+
+  if (hoursLeft <= 0) return "expired"
+  if (hoursLeft <= 24) return "ending"
+  return "active"
+}
+
+export const activeTickets = tickets.filter(ticket => {
+  return getTimeStatus(ticket.date) !== "expired"
+})
